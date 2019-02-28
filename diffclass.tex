@@ -1,0 +1,213 @@
+\documentclass{jsarticle}
+\usepackage{amsmath,amssymb,amsfonts}
+\begin{document}
+
+\title{坂上貴之　\\ 微分方程式論　期末試験}
+\author{@seasawher}
+\date{}
+\maketitle
+
+\section*{2017年　問題}
+\subsection*{問1}
+$y(0) = y'(0)$および$y(1) = -y'(1)$を満たす$[0,1]$上の$C^2$級関数$y(x)$に対する自己共役作用素$L = \frac{d^2}{dx^2}$を考える。このとき$L$に対して定義されるGreen関数を求めよ。
+
+\subsection*{問2}
+$\lambda$を正の実数とする。このとき$[1,b]$上の$C^2$級関数$u(x)$に対する微分作用素
+$$
+Lu(x) =x^2 \frac{d^2u}{dx^2}+x \frac{du}{dx}
+$$
+に対する固有値問題$Lu + \lambda u = 0$, $u(1)=u(b)=0$を考える。以下の問に答えよ。\\
+(1) この固有値問題を解け。\\
+(2) ある実数値関数$\rho(x)$に対して、$\rho L$が$L^2$内積と境界条件$u(1)=u(b)=0$に対して、自己共役作用素となるように$\rho$の満たすべき微分方程式を求めよ。\\
+(3) (2)を満たす$\rho$を1つ選んで、$[1,b]$上の連続関数$f,g$に対して内積$\langle f,g \rangle_{\rho}$を以下のように定義する。
+$$
+\langle f, g\rangle_{\rho}=\int_1^b f(x)\overline{g(x)}\rho(x)dx
+$$
+このとき、(1)で定めた固有関数はこの内積で直交関係にあることを示せ。
+
+\subsection*{問3}
+関数$x(t)$および$y(t)$に対する以下の微分方程式に関する問いに答えよ。\\
+(1) $\mu$を正の実数とする。$x' = y$, $y'=-2\mu y -x +x^3$の平衡点とその安定性を調べよ。\\
+(2) $x' =-y -x(x^2+y^2)$, $y'=x-y(x^2+y^2)$に対して、リアプノフ関数の方法を用いて原点が漸近安定な定常解であることを示せ。
+
+\subsection*{問4}
+$\mu$を実数とする。$x(t)$に関する微分方程式$x''+\mu x +x^3=0$について以下の問に答えよ。\\
+(1) この方程式の平衡点を定めよ。\\
+(2) この方程式の解に対する時間保存量を求めよ。\\
+(3) この方程式の解軌道の概形を描け。\\
+(4) (1)で求めた平衡点の安定性を考察せよ。
+
+\subsection*{問5}
+$\{ f_n(x)\}_{n=1}^{\infty}$は$[0,1]$上の$C^1$級関数列であり、すべての$n$に対して以下を満たすものとする。\\
+$$
+0<x \leq 1に対して、|f_n'(x)|\leq \frac{1}{\sqrt[3]{x}}
+$$
+$$
+\int_0^1 f_n(x)dx =0
+$$
+このとき$\{ f_n(x)\}_{n=1}^{\infty}$から$[0,1]$で一様収束する部分列がとれることを示せ。
+
+\newpage
+\section*{2017年　解答例}
+\subsection*{問1}
+境界条件を満たす関数の空間を
+$$
+X=\Bigl\{ y \in C^2[0,1] \Big\arrowvert \det \begin{pmatrix} 1 & y(0) \\ 1 & y'(0) \end{pmatrix} = \det \begin{pmatrix} 1 & y(1) \\ -1 & y'(1) \end{pmatrix} = 0 \Bigr\}
+$$
+とおく。このとき
+$$
+\begin{cases}
+  1 = y(0) \\
+  1 = y'(0) \\
+  Ly = 0
+\end{cases}
+$$
+の解は$u(x)=x+1$であり、
+$$
+\begin{cases}
+  1 = y(1) \\
+  -1 = y'(1) \\
+  Ly = 0
+\end{cases}
+$$
+の解は$v(x)=-x+2$である。Wronski行列式を計算すると
+\begin{align*}
+W &= \det \begin{pmatrix}
+x+1 & -x+2 \\ 1& -1
+\end{pmatrix} \\
+&=-3
+\end{align*}
+となり、この場合定数である。そこでGreen関数は
+$$
+G(x,\xi) = \begin{cases}
+-\frac{1}{3}(\xi + 1)(-x+2) \  \ \ \ (0 \leq \xi \leq x \leq 1) \\
+-\frac{1}{3}(x + 1)(-\xi+2) \  \ \ \ (0 \leq x \leq \xi \leq 1)
+\end{cases}
+$$
+と求まる。
+
+\subsection*{問2}
+(1) 微分方程式$Lu + \lambda u=0$つまり
+$$
+x^2u'' +xu' +\lambda u = 0
+$$
+はEulerの微分方程式であるので、$x=e^s$と変換すれば
+\begin{align*}
+  \frac{du}{dx} &= \frac{1}{x}\frac{du}{ds} \\
+  \frac{d^2u}{dx^2} &= \frac{1}{x^2} \left( \frac{d^2u}{ds^2}   - \frac{du}{ds} \right)
+\end{align*}
+により、定数係数の微分方程式
+$$
+u'' + \lambda u = 0
+$$
+を得る。この微分方程式は容易に解けて、一般解は
+$$
+u(x) =c_1 \exp(\sqrt{-\lambda}\log x) + c_2 \exp(-\sqrt{-\lambda}\log x)
+$$
+である。境界条件を考慮すると、求める解は
+$$
+\begin{cases}
+  u(x) = \mathcal{C} \sin (\sqrt{\lambda} \log x) \\
+  \sqrt{\lambda} \log b \in \pi \mathbb{Z}_{ \geq 0} \\
+  \mathcal{C} \in \mathbb{C}
+\end{cases}
+$$
+である。\\
+
+(2) $u,v \in C^2[1,b]$は境界条件を満たすとする。このとき、境界条件に注意しながら部分積分をすると
+$$
+\langle \rho L u, v \rangle - \langle u,\rho Lv \rangle =
+\int_1^b (\rho x + \rho' x^2)(u\overline{v}' - u'\overline{v} )dx
+$$
+であるから、$\rho L$が自己共役であるために$\rho$の満たすべき微分方程式は
+$$
+\rho + x \frac{d\rho}{dx} = 0
+$$
+である。\\
+
+(3) $f,g$は異なる固有値$\lambda,\delta$に属する$L$の固有関数であって、境界条件を満たすものとする。$\rho L$の自己共役性により
+\begin{align*}
+  \langle f,g \rangle_{\rho} &= \langle \rho f,g \rangle \\
+  &= -\frac{1}{\lambda} \Big\langle \rho L f,g \Big\rangle \\
+  &=  -\frac{1}{\lambda} \Big\langle  f,\rho Lg \Big\rangle
+  \\
+  &= \frac{\delta}{\lambda} \Big\langle  f,\rho g \Big\rangle \\
+  &= \frac{\delta}{\lambda} \Big\langle  f, g \Big\rangle_{\rho}
+\end{align*}
+$\delta \neq \lambda$だから$\langle f,g \rangle_{\rho}=0$。
+
+\subsection*{問3}
+省略。
+
+\subsection*{問4}
+省略。
+
+\subsection*{問5}
+計算すると、仮定により
+\begin{align*}
+  |f_n(x) - f_n(y)| &\leq \left|\int_y^x f_n'(t)dt \right| \\
+& \leq \int_y^x |f_n'(t)|dt \\
+& \leq \int_y^x \frac{dt}{\sqrt[3]{t}} \\
+& \leq \frac{3}{2} |\sqrt[3]{x^2}-\sqrt[3]{y^2}|
+\end{align*}
+だから
+$|x-y| \rightarrow 0$のとき$\sup_n |f_n(x)-f_n(y)|\rightarrow 0$。すなわち$\{ f_n\}$は同程度連続。\\
+また、
+\begin{align*}
+  |f_n(x)| &\leq \left| f_n(x) - \int_0^1 f_n(t)dt \right| \\
+  &\leq \left|  \int_0^1(f_n(x) - f_n(t))dt \right| \\
+  &\leq  \int_0^1 | f_n(x) - f_n(t) |dt \\
+  &\leq  \frac{3}{2} \int_0^1 |\sqrt[3]{x^2}- \sqrt[3]{t^2}|dt \\
+  &\leq \frac{3}{2} \int_0^1 dt　\\
+  &\leq \frac{3}{2}
+\end{align*}
+であるから一様有界性もいえる。よってAscoli-Arzelaの定理から示すべきことがいえた。
+
+\newpage
+\section*{2018年　問題}
+\subsection*{問1}
+関数$x(t)$に対するGaussの方程式の$t=0$の近傍での解析解(一般解)を求めよ。
+$$
+t(t-1)x''+(4t-2)x'+2x=0
+$$
+
+\subsection*{問2}
+次の微分方程式の$t=0$まわりの整級数解をひとつ求めよ。
+$$
+x''+\left( 1- \frac{2}{t} \right)x' + \frac{2-t}{t^2}x=0
+$$
+
+\subsection*{問3}
+関数$u \in C^2[1,2]$に対する、次の二階線形微分方程式の境界値問題を考える。
+\begin{align*}
+  &Lu = x^2 \frac{d^2u}{dx^2} + 2x\frac{du}{dx} -2u \\
+  &u(1)=u(2)=0
+\end{align*}
+(1) 微分方程式$Lu=0$の一般解を求めよ。\\
+(2) この微分作用素$L$と境界条件に対して定義されるGreen関数を求めよ。
+
+\subsection*{問4}
+関数列$\{g_n\}_{n\in \mathbb{N}} \subset C^2[0,1]$が以下の条件を満たすとする。
+\begin{align*}
+  &\forall n \in \mathbb{N} \ \ \ g_n(0)=g_n'(0)=0 \\
+  &\forall n \in \mathbb{N} \ \forall x \in [0,1] \ \ \ |g_n(x)| \leq 1
+\end{align*}
+このとき$\{ g_n \}_{n \in \mathbb{N}}$から$[0,1]$上一様収束する部分列が取れることを示せ。
+
+\subsection*{問5}
+関数$u \in C^2[1,e]$に対する以下のStrum-Liouville固有値問題を考える。このとき以下の問に答えよ。
+$$
+Lu = x^2 u'' -xu' \ \ \ \ \ \ \ u(1)=u(e)=0
+$$
+(1) 実数$\lambda > 0$に対して、固有値問題$Lu+\lambda u=0$を解き、この式を満たす$\lambda$と$u$を全て求めよ。\\
+(2) 適当な正値関数$\rho(x)$であって、$\rho L$が自己共役作用素になるものを求めよ。\\
+(3) (2)で求めた$\rho(x)$に対して
+$$
+\langle f,g \rangle_{\rho} = \int_1^e f(x)\overline{g(x)}\rho(x)dx
+$$
+によって定義される$L^2(1,e)$の内積$\langle \cdot, \cdot \rangle_{\rho}$に関して、(1)の固有関数は互いに直交関係にあることを示せ。
+
+\newpage
+
+
+\end{document}
